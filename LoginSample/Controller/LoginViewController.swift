@@ -148,6 +148,11 @@ final class ViewController: UIViewController {
         passwordResetButton.translatesAutoresizingMaskIntoConstraints = false
         passwordMarkButton.translatesAutoresizingMaskIntoConstraints = false
         
+        //AutoLayout
+        NSLayoutConstraint.activate([
+                
+        ])
+        
        
         
     }
@@ -158,6 +163,16 @@ final class ViewController: UIViewController {
         passwordTextField.delegate = self
         [stackView, passwordResetButton].forEach { view.addSubview($0) }
     }
+    
+    //⭐️그 외 로그인 방식⭐️
+    //카카오, 구글, 애플 구현 예정
+    //버튼만 누르고 콜백함수로 받아올 예정
+    //카카오
+    
+    //구글
+    
+    //애플
+    
     
 }
 
