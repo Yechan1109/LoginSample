@@ -124,7 +124,8 @@ final class ViewController: UIViewController {
         return stView
     }()
     
-    
+    lazy var idInfoLabelCenterYConstraint = idInfoLabel.centerYAnchor.constraint(equalTo: idTextField.centerYAnchor)
+    lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +140,7 @@ final class ViewController: UIViewController {
     }
     
     
+    
     private func makeUI() {
         idView.translatesAutoresizingMaskIntoConstraints = false
         idInfoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +152,13 @@ final class ViewController: UIViewController {
         
         //AutoLayout
         NSLayoutConstraint.activate([
-                
+            //id 입력 라벨
+            idInfoLabel.leadingAnchor.constraint(equalTo: idTextField.leadingAnchor, constant: 8),
+            idInfoLabel.trailingAnchor.constraint(equalTo: idTextField.trailingAnchor, constant: -8),
+            idInfoLabelCenterYConstraint,
+            
+        
+            
         ])
         
        
