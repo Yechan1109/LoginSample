@@ -9,10 +9,8 @@ import Foundation
 
 
 struct UserInfo {
-    var name: String
     var id: String
     var password: String
     var email: String
-    var phoneNumber: String
-    var nickName: String?
 }
+
