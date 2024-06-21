@@ -164,4 +164,25 @@ final class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
     
+    // MARK: - 텍스트 필드 편집 시작할 때 설정 (문구가 올라가면서 크기 작아짐)
+    func textFieldDidBeginEditing(_ textField: UITextField) {    //autoLayout Update
+        
+    }
+    
+    // MARK: - 텍스트 필드 종료 시점 (글자 / 백그라운드 update)
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    // MARK: - id / pw 로그인 버튼 색 변경
+    @objc private func textFieldEditingCharge(_ textField: UITextField) {
+        
+    }
+    
+    // MARK: - Enter 다음 줄로 이동 및 키보드 활성 유무
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+
+
 }
