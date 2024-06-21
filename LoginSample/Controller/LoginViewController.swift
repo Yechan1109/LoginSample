@@ -130,6 +130,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configure()
+        makeUI()
     }
 
     
@@ -139,14 +140,23 @@ final class ViewController: UIViewController {
     
     
     private func makeUI() {
+        idView.translatesAutoresizingMaskIntoConstraints = false
+        idInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        passwordInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordResetButton.translatesAutoresizingMaskIntoConstraints = false
+        passwordMarkButton.translatesAutoresizingMaskIntoConstraints = false
         
        
         
     }
     
     private func configure() {
+        view.backgroundColor = .black
         idTextField.delegate = self
         passwordTextField.delegate = self
+        [stackView, passwordResetButton].forEach { view.addSubview($0) }
     }
     
 }
