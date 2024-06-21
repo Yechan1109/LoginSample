@@ -13,8 +13,6 @@
 		C7E053D32C229871008162BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C7E053D22C229871008162BC /* Base */; };
 		C7E053D52C229873008162BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7E053D42C229873008162BC /* Assets.xcassets */; };
 		C7E053D82C229873008162BC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C7E053D72C229873008162BC /* Base */; };
-		C7E053E02C2298ED008162BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E053DF2C2298ED008162BC /* LoginViewController.swift */; };
-		C7E053E22C22990D008162BC /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E053E12C22990D008162BC /* SignViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +24,6 @@
 		C7E053D42C229873008162BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7E053D72C229873008162BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7E053D92C229873008162BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7E053DF2C2298ED008162BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C7E053E12C22990D008162BC /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +63,6 @@
 				C7E053D42C229873008162BC /* Assets.xcassets */,
 				C7E053D62C229873008162BC /* LaunchScreen.storyboard */,
 				C7E053D92C229873008162BC /* Info.plist */,
-				C7E053DF2C2298ED008162BC /* LoginViewController.swift */,
-				C7E053E12C22990D008162BC /* SignViewController.swift */,
 			);
 			path = LoginSample;
 			sourceTree = "<group>";
@@ -144,9 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E053E02C2298ED008162BC /* LoginViewController.swift in Sources */,
 				C7E053D02C229871008162BC /* ViewController.swift in Sources */,
-				C7E053E22C22990D008162BC /* SignViewController.swift in Sources */,
 				C7E053CC2C229871008162BC /* AppDelegate.swift in Sources */,
 				C7E053CE2C229871008162BC /* SceneDelegate.swift in Sources */,
 			);
