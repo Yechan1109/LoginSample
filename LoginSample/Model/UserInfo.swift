@@ -13,7 +13,6 @@ struct UserInfo {
     var id: String
     var password: String
     var email: String
-    var image: String
     var phoneNumber: String
     var nickName: String?
 }
