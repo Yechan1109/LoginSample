@@ -13,6 +13,9 @@ final class ViewController: UIViewController {
     private static var fontSize: CGFloat = 18
     private var cornerRadius: CGFloat = 5
     
+    //⭐️Validation add - 예정
+    
+    
     //⭐️추후 관련 매니저 만들면 괜찮을듯 함⭐️
     private lazy var idView: UIView = {
         let view = UIView()
@@ -152,12 +155,25 @@ final class ViewController: UIViewController {
         
         //AutoLayout
         NSLayoutConstraint.activate([
-            //id 입력 라벨
+
             idInfoLabel.leadingAnchor.constraint(equalTo: idTextField.leadingAnchor, constant: 8),
             idInfoLabel.trailingAnchor.constraint(equalTo: idTextField.trailingAnchor, constant: -8),
             idInfoLabelCenterYConstraint,
             
-        
+            idTextField.topAnchor.constraint(equalTo: idView.topAnchor, constant: 15),
+            idTextField.bottomAnchor.constraint(equalTo: idView.bottomAnchor, constant: -2),
+            idTextField.leadingAnchor.constraint(equalTo: idView.leadingAnchor, constant: 8),
+            idTextField.trailingAnchor.constraint(equalTo: idView.trailingAnchor, constant: -8),
+            
+            passwordInfoLabel.leadingAnchor.constraint(equalTo: passwordView.leadingAnchor, constant: 8),
+            passwordInfoLabel.trailingAnchor.constraint(equalTo: passwordView.trailingAnchor, constant: -8),
+            passwordInfoLabelCenterYConstraint,
+            
+            passwordTextField.topAnchor.constraint(equalTo: passwordView.topAnchor, constant: 15),
+            passwordTextField.bottomAnchor.constraint(equalTo: passwordView.bottomAnchor, constant: -2),
+            passwordTextField.leadingAnchor.constraint(equalTo: passwordView.leadingAnchor, constant: 8),
+            passwordTextField.trailingAnchor.constraint(equalTo: passwordView.trailingAnchor, constant: -8),
+            
             
         ])
         
