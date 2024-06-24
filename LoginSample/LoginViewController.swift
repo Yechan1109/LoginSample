@@ -42,11 +42,6 @@ class LoginViewController: UIViewController {
             
             
             
-            
-            // or 삼항연산자 사용
-            //        let result = (idTextField.text == self.id) && (pwTextField.text == self.password)
-            //        ? print("로그인에 성공하셨습니다 :)") : print("올바른 아이디와 비밀번호를 입력해 주세요!")
-            
         }
         
         
