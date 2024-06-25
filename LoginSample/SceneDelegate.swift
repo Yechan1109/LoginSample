@@ -11,18 +11,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+//          초기 설정 코드
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+//        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+//        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        // for CodeBase code
+//        let window = UIWindow(windowScene: windowScene)
+//        window.rootViewController = ViewController()
+//        window.makeKeyAndVisible()
+//        self.window = window
+//    }
+    // 네비세이션 사용 이후 코드 변경 -> 개발 시 네비게이션은 항상 존재하니 애초에 이 설정값을 사용할 것
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        // for CodeBase code
-        let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
-        window.makeKeyAndVisible()
-        self.window = window
-    }
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            
+            window = UIWindow(windowScene: windowScene)
+            let navigationController = UINavigationController(rootViewController: LoginViewController())
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

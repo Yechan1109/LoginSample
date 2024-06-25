@@ -1,13 +1,6 @@
-//
-//  ViewController.swift
-//  LoginSample
-//
-//  Created by t2023-m0013 on 6/19/24.
-//
-
 import UIKit
 
-final class ViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     
     
@@ -22,6 +15,8 @@ final class ViewController: UIViewController {
 //    }()
 //    private static var tfWidth = 100
 //    private static var tfHeight: CGFloat = 50
+    
+    var userDB: [String : String] = [:]
     
     private lazy var idInfoLabel: UILabel = {
         let label = UILabel()
@@ -78,12 +73,26 @@ final class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.isEnabled = false
-
-//        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.isEnabled = true // 기능 구현 완료시 버튼 활성화(true) 할 것
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var signupButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 10
+        button.setTitle("회원가입", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.isEnabled = true // 기능 구현 완료시 버튼 활성화(true) 할 것
+        button.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     
     private lazy var passwordResetButton: UIButton = {
         let button = UIButton()
@@ -105,8 +114,6 @@ final class ViewController: UIViewController {
             return stackView
         }()
         
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,26 +124,65 @@ final class ViewController: UIViewController {
 
     }
     
-//    @objc private func loginButtonTapped() {
-//
-//    }
+    @objc private func signupButtonTapped() {
+            let signUpViewController = SignUpViewController()
+                navigationController?.pushViewController(signUpViewController, animated: true)
+        }
+    
+    @objc private func loginButtonTapped() {
+        guard let userName = idTextField.text, !userName.isEmpty,
+              let userPassword = passwordTextField.text, !userName.isEmpty else {
+            showAlert(message: "모든 값을 입력해 주세요")
+            return
+        }
+        if let inputPw = userDB[userName], inputPw == userPassword {
+            showAlert(message: "로그인 성공!")
+            // 로그인 성공 시 다음 페이지 넘어가는 코드 구현
+            // 여기 작동 X -> SceneDelegate를 건드려서 억지로 작업할 수 있지만
+            /* 다음과 같은 방법 존재함.
+             Segue 사용: Interface Builder를 사용하여 스토리보드에서 segue를 정의하고, 이를 통해 화면 간 전환을 관리할 수 있습니다. Segue는 앱의 UI 흐름을 시각적으로 관리할 수 있게 해줍니다.
+
+             커스텀 NavigationManager 클래스 사용: 앱의 네비게이션 스택을 중앙에서 관리하는 클래스를 만들어서, 해당 클래스를 통해 페이지 전환을 처리할 수 있습니다. 이 경우 각 ViewController에서 네비게이션 스택 관리 코드를 반복하지 않고, 중앙에서 관리할 수 있습니다.
+
+             Coordinator 패턴 사용: Coordinator 패턴을 사용하면 화면 전환 로직을 완전히 분리하여 각각의 ViewController가 자신의 역할에 집중할 수 있습니다. Coordinator는 네비게이션 스택의 전환을 관리하고, 각 ViewController에게 적절한 화면 전환을 지시합니다.
+             
+             prepare(for segue: UIStoryboardSegue, sender: Any?) 메서드는 Segue를 사용하여 화면 간 데이터 전달 및 설정을 위해 자주 활용되는 메서드입니다. 이 메서드를 사용하면 Segue가 발생하기 전에 데이터를 준비하거나 설정할 수 있습니다.
+
+             */
+            // How to
+            let mainViewController = MainViewController()
+                navigationController?.pushViewController(mainViewController, animated: true)
+        } else {
+            showAlert(message: "아이디 또는 비밀번호가 틀렸습니다. 다시 입력해 주세요")
+        }
+        
+    }
+
     
     private func makeUI() {
         NSLayoutConstraint.activate([
             
-            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             vStackView.heightAnchor.constraint(equalToConstant: 250),
+      
+            signupButton.topAnchor.constraint(equalTo: vStackView.bottomAnchor, constant: 5),
+            signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             
-//            passwordResetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            passwordResetButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20)
+            passwordResetButton.widthAnchor.constraint(equalToConstant: 250),
+            passwordResetButton.heightAnchor.constraint(equalToConstant: 30),
+            passwordResetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordResetButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
         ])
     }
     
     private func configure() {
         view.backgroundColor = .darkGray
-        view.addSubview(vStackView)
+//        view.addSubview(vStackView)
+//        view.addSubview(passwordResetButton)
+//        view.addSubview(signupButton)
+        [vStackView, passwordResetButton, signupButton].forEach { view.addSubview($0)}
         
         vStackView.addArrangedSubview(idInfoLabel)
         vStackView.addArrangedSubview(idTextField)
@@ -144,45 +190,13 @@ final class ViewController: UIViewController {
         vStackView.addArrangedSubview(passwordTextField)
         vStackView.addArrangedSubview(loginButton)
         }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alertController, animated: true)
+    }
 
-        
-//    private func configure() {
-//        view.backgroundColor = .darkGray
-//        
-////        view.addSubview(idView)
-////        view.addSubview(idInfoLabel)
-//        
-//        [idInfoLabel, idTextField, passwordInfoLabel, passwordTextField].forEach { view.addSubview($0)
-////            NSLayoutConstraint.activate([
-////                $0.widthAnchor.constraint(equalTo: 300)
-////                $0.heightAnchor.constraint(equalTo: 40)
-////            ])
-//        }
-//        
-//        NSLayoutConstraint.activate([
-//
-//            idInfoLabel.widthAnchor.constraint(equalToConstant: 300),
-//            idInfoLabel.heightAnchor.constraint(equalToConstant: 40),
-//            idInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            idInfoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
-//                    
-//            idTextField.widthAnchor.constraint(equalToConstant: 300),
-//            idTextField.heightAnchor.constraint(equalToConstant: 40),
-//            idTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            idTextField.topAnchor.constraint(equalTo: idInfoLabel.bottomAnchor, constant: 10),
-//            
-//            passwordInfoLabel.widthAnchor.constraint(equalToConstant: 300),
-//            passwordInfoLabel.heightAnchor.constraint(equalToConstant: 40),
-//            passwordInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            passwordInfoLabel.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: 10),
-//            
-//            passwordTextField.widthAnchor.constraint(equalToConstant: 300),
-//            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-//            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            passwordTextField.topAnchor.constraint(equalTo: passwordInfoLabel.bottomAnchor, constant: 10),
-//        ])
-//        
-//    }
     
     //⭐️그 외 로그인 방식⭐️
     //카카오, 구글, 애플 구현 예정
@@ -197,7 +211,7 @@ final class ViewController: UIViewController {
 }
 
 
-extension ViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
     // MARK: - 텍스트 필드 편집 시작할 때 설정 (문구가 올라가면서 크기 작아짐)
     func textFieldDidBeginEditing(_ textField: UITextField) {    //autoLayout Update
@@ -241,4 +255,9 @@ extension UIColor {
                   blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
                   alpha: alpha)
     }
+}
+
+//@available(iOS 17.0, *) /
+#Preview {
+    LoginViewController()
 }

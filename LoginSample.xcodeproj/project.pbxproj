@@ -14,6 +14,7 @@
 		75527A902C254F0C00815B47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75527A8F2C254F0C00815B47 /* SignUpViewController.swift */; };
 		75527A922C258CB300815B47 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75527A912C258CB300815B47 /* SignUpManager.swift */; };
 		C764D6062C297AC100BFEFFD /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764D6052C297AC100BFEFFD /* Backup.swift */; };
+		C764D60B2C2AE0BC00BFEFFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764D60A2C2AE0BC00BFEFFD /* MainViewController.swift */; };
 		C7E053CC2C229871008162BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E053CB2C229871008162BC /* AppDelegate.swift */; };
 		C7E053CE2C229871008162BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E053CD2C229871008162BC /* SceneDelegate.swift */; };
 		C7E053D02C229871008162BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E053CF2C229871008162BC /* LoginViewController.swift */; };
@@ -30,6 +31,7 @@
 		75527A8F2C254F0C00815B47 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		75527A912C258CB300815B47 /* SignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
 		C764D6052C297AC100BFEFFD /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
+		C764D60A2C2AE0BC00BFEFFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C7E053C82C229871008162BC /* LoginSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E053CB2C229871008162BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7E053CD2C229871008162BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			children = (
 				C7E053CF2C229871008162BC /* LoginViewController.swift */,
 				75527A8F2C254F0C00815B47 /* SignUpViewController.swift */,
+				C764D60A2C2AE0BC00BFEFFD /* MainViewController.swift */,
 				C764D6052C297AC100BFEFFD /* Backup.swift */,
 			);
 			path = Controller;
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E053D02C229871008162BC /* LoginViewController.swift in Sources */,
+				C764D60B2C2AE0BC00BFEFFD /* MainViewController.swift in Sources */,
 				75527A842C2521C700815B47 /* LoginType.swift in Sources */,
 				75527A902C254F0C00815B47 /* SignUpViewController.swift in Sources */,
 				75527A8A2C25252300815B47 /* SignUpError.swift in Sources */,
