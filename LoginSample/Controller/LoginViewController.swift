@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
 //    private static var tfWidth = 100
 //    private static var tfHeight: CGFloat = 50
     
-    var userDB: [String : String] = [:]
+    var userDB: [String : String] = ["Admin":"1234"]
     
     private lazy var idInfoLabel: UILabel = {
         let label = UILabel()
@@ -123,9 +123,12 @@ final class LoginViewController: UIViewController {
         
 
     }
+// MARK: - 동적 기능 관련 func
     
     @objc private func signupButtonTapped() {
             let signUpViewController = SignUpViewController()
+        // 로그인 화면 DB -> 회원가입 화면 DB
+        signUpViewController.signUserDB = self.userDB
                 navigationController?.pushViewController(signUpViewController, animated: true)
         }
     
@@ -136,6 +139,10 @@ final class LoginViewController: UIViewController {
             return
         }
         if let inputPw = userDB[userName], inputPw == userPassword {
+            // How to
+            let mainViewController = MainViewController()
+            navigationController?.pushViewController(mainViewController, animated: true)
+            // 뷰 전환과 알람 코드 순서 숙지할 것 (알람 먼저 실행 후 뷰 전환 기능 작동 안하는 오류)
             showAlert(message: "로그인 성공!")
             // 로그인 성공 시 다음 페이지 넘어가는 코드 구현
             // 여기 작동 X -> SceneDelegate를 건드려서 억지로 작업할 수 있지만
@@ -149,9 +156,7 @@ final class LoginViewController: UIViewController {
              prepare(for segue: UIStoryboardSegue, sender: Any?) 메서드는 Segue를 사용하여 화면 간 데이터 전달 및 설정을 위해 자주 활용되는 메서드입니다. 이 메서드를 사용하면 Segue가 발생하기 전에 데이터를 준비하거나 설정할 수 있습니다.
 
              */
-            // How to
-            let mainViewController = MainViewController()
-                navigationController?.pushViewController(mainViewController, animated: true)
+            
         } else {
             showAlert(message: "아이디 또는 비밀번호가 틀렸습니다. 다시 입력해 주세요")
         }
