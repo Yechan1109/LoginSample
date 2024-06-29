@@ -7,9 +7,19 @@
 
 import UIKit
 
+class UserInfo1 {
+    var name: String?
+    var age: Int?
+    var email: String?
+    var phonenumber: String?
+    var adress: String?
+    
+}
+
+
 class SignUpViewController: UIViewController {
-    
-    
+                     //고유 고객 Id 번호 (일련번호 같은 걸로 생각하면됨)
+                    //uuid   - value (많은 정보를 담을 수 있음)
     var signUserDB: [String : String] = [:]
 //    let loginViewController = LoginViewController()
 //    var signUserDB = loginViewController.userDB
