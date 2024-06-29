@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
 //    private static var tfWidth = 100
 //    private static var tfHeight: CGFloat = 50
     
-    var userDB: [String : String] = ["Admin":"1234"]
+    var userDB: [String : String] = ["qwe":"11"]
     
     private lazy var idInfoLabel: UILabel = {
         let label = UILabel()
@@ -34,6 +34,10 @@ final class LoginViewController: UIViewController {
         textField.backgroundColor = .black
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.textColor = .white
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.keyboardType = .default
+        textField.clearsOnBeginEditing = false
         textField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력해 주세요", attributes: [.foregroundColor: UIColor.systemGray])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -56,6 +60,7 @@ final class LoginViewController: UIViewController {
             textField.textColor = .white
             textField.font = UIFont.systemFont(ofSize: 15)
             textField.tintColor = .white
+            textField.keyboardType = .numberPad
             textField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력해 주세요", attributes: [.foregroundColor: UIColor.systemGray])
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
@@ -117,13 +122,17 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configure()
         makeUI()
         
-
     }
 // MARK: - 동적 기능 관련 func
+    
+    // keypad 내리는 함수
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     @objc private func signupButtonTapped() {
             let signUpViewController = SignUpViewController()

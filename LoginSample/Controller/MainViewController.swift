@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     
     private lazy var select2Button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemMint
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         button.layer.cornerRadius = 10
         button.setTitle("모달전환 Present/Dismiss", for: .normal)
         button.setTitleColor(UIColor(hexCode: "#ffffff"), for: .normal)
@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
-        button.setTitle("Add Child View Controller를 통한 하위 뷰 생성", for: .normal)
+        button.setTitle("Coordinate 패턴(but, 난이도가 높아 추후 업데이트 예정", for: .normal)
         button.setTitleColor(UIColor(hexCode: "#ffffff"), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         button.isEnabled = true
@@ -66,15 +66,29 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    private lazy var select5Button: UIButton = {
+    private lazy var toTabBarButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemTeal
+        button.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         button.layer.cornerRadius = 10
-        button.setTitle("Coordinate 패턴(but, 난이도가 높아 추후 업데이트 예정", for: .normal)
+        button.setTitle("TabBarController", for: .normal)
         button.setTitleColor(UIColor(hexCode: "#ffffff"), for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 11)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.isEnabled = true
-//        button.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toTabBarTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+// MARK: - 심심풀이 게임버튼
+    private lazy var goToDiceButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+//        button.layer.cornerRadius = 10
+        button.setTitle("주사위 게임", for: .normal)
+        button.setTitleColor(UIColor(hexCode: "#ffffff"), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.isEnabled = true
+        button.addTarget(self, action: #selector(goToDiceTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -123,6 +137,15 @@ class MainViewController: UIViewController {
             childViewController.view.frame = view.bounds
             childViewController.didMove(toParent: self)
         }
+    @objc func toTabBarTapped() {
+        let tabBarViewController = TabBarVIewControlloer()
+        self.navigationController?.pushViewController(tabBarViewController, animated: true)
+    }
+    
+    @objc func goToDiceTapped() {
+        let diceVIewControlloer = DiceVIewControlloer()
+        self.navigationController?.pushViewController(diceVIewControlloer, animated: true)
+    }
     
     
     
@@ -133,19 +156,20 @@ class MainViewController: UIViewController {
             vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             vStackView.heightAnchor.constraint(equalToConstant: 250),
+            
+            goToDiceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            goToDiceButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
      
         ])
     }
     
     private func configure() {
         view.backgroundColor = UIColor(hexCode: "#FFBF00")
-        [vStackView].forEach { view.addSubview($0)}
+        view.addSubview(vStackView)
+        view.addSubview(goToDiceButton)
         
-        vStackView.addArrangedSubview(select1Button)
-        vStackView.addArrangedSubview(select2Button)
-        vStackView.addArrangedSubview(select3Button)
-        vStackView.addArrangedSubview(select4Button)
-        vStackView.addArrangedSubview(select5Button)
+        [select1Button,select2Button,select3Button,
+         select4Button,toTabBarButton].forEach { vStackView.addArrangedSubview($0)}
         }
     
 }

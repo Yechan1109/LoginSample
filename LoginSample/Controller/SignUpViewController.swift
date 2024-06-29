@@ -32,6 +32,9 @@ class SignUpViewController: UIViewController {
         textField.backgroundColor = .black
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.textColor = .white
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.keyboardType = .default
         textField.attributedPlaceholder = NSAttributedString(string: "아이디를 입력해 주세요", attributes: [.foregroundColor: UIColor.systemGray])
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -57,6 +60,7 @@ class SignUpViewController: UIViewController {
             textField.attributedPlaceholder = NSAttributedString(string: "비밀번호를 입력해 주세요", attributes: [.foregroundColor: UIColor.systemGray])
             textField.autocapitalizationType = .none
             textField.autocorrectionType = .no
+            textField.keyboardType = .numberPad
             textField.spellCheckingType = .no
             textField.isSecureTextEntry = true
             textField.clearsOnBeginEditing = false
@@ -95,6 +99,10 @@ class SignUpViewController: UIViewController {
         makeUI()
         
 
+    }
+    // keypad 내리는 함수
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @objc private func checkButtonTapped() {

@@ -17,8 +17,8 @@ class Select2ViewController: UIViewController {
 
         private func setupDismissButton() {
             let button = UIButton(type: .system)
-            button.setTitle("뒤로 가기 버튼 이걸로 Dismiss를 활용해도 되겠네ㅎㅎ", for: .normal)
-            button.addTarget(self, action: #selector(dismissSecondViewController), for: .touchUpInside)
+            button.setTitle("뒤로가기 버튼 커스텀 가능", for: .normal)
+            button.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
 
             view.addSubview(button)
@@ -28,11 +28,11 @@ class Select2ViewController: UIViewController {
             ])
         }
 
-        @objc private func dismissSecondViewController() {
-            dismiss(animated: true, completion: nil)
-        }
-    
-}
+            @objc private func dismissViewController() {
+                dismiss(animated: true, completion: nil)
+            }
+        
+    }
 
 #Preview {
     Select2ViewController()
